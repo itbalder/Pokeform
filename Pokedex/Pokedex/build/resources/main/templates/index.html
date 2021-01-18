@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Lista Pokemon</title>
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+
+</head>
+<body>
+
+<div class="container my-2">
+    <h1>Lista Pokemon</h1>
+
+    <a th:href = "@{/showNewPokemonForm}" class="btn btn-primary btn-sm mb-3"> agregar Pokemon </a>
+
+    <table border="1" class = "table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>
+                <a th:href="@{'/page/' + ${currentPage} + '?sortField=numeroPokedex&sortDir=' + ${reverseSortDir}}">
+                    Numero de Pokedex</a>
+            </th>
+            <th>
+                <a th:href="@{'/page/' + ${currentPage} + '?sortField=nombrePokemon&sortDir=' + ${reverseSortDir}}">
+                    Nombre Pokemon</a>
+            </th>
+            <th>
+                <a th:href="@{'/page/' + ${currentPage} + '?sortField=tipoUno&sortDir=' + ${reverseSortDir}}">
+                    Tipo Uno</a>
+            </th>
+            <th>
+                <a th:href="@{'/page/' + ${currentPage} + '?sortField=tipoDos&sortDir=' + ${reverseSortDir}}">
+                    Tipo Dos</a>
+            </th>
+            <th>
+                <a th:href="@{'/page/' + ${currentPage} + '?sortField=descripcion&sortDir=' + ${reverseSortDir}}">
+                    Descripcion</a>
+            </th>
+            <th> Actions </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pokemon : ${listPokemon}">
+            <td th:text="${pokemon.numeroPokedex}"></td>
+            <td th:text="${pokemon.nombrePokemon}"></td>
+            <td th:text="${pokemon.tipoUno}"></td>
+            <td th:text="${pokemon.tipoDos}"></td>
+            <td th:text="${pokemon.Descripcion}"></td>
+            <td> <a th:href="@{/showFormForUpdate/{id}(id=${pokemon.id})}" class="btn btn-primary">Actualizar</a>
+                <a th:href="@{/deletePokemon/{id}(id=${pokemon.id})}" class="btn btn-danger">Borrar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div th:if = "${totalPages > 1}">
+        <div class = "row col-sm-10">
+            <div class = "col-sm-2">
+                Total Rows: [[${totalItems}]]
+            </div>
+            <div class = "col-sm-1">
+					<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+						<a th:if="${currentPage != i}" th:href="@{'/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+						<span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
+					</span>
+            </div>
+            <div class = "col-sm-1">
+                <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+                <span th:unless="${currentPage < totalPages}">Next</span>
+            </div>
+
+            <div class="col-sm-1">
+                <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+                <span th:unless="${currentPage < totalPages}">Last</span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

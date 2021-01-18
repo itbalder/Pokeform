@@ -1,0 +1,12 @@
+com/capgeminiproyect/Pokedex/repository/PokemonRepository.java
+ com.capgeminiproyect.Pokedex.repository.PokemonRepository
+com/capgeminiproyect/Pokedex/PokedexApplication.java
+ com.capgeminiproyect.Pokedex.PokedexApplication
+com/capgeminiproyect/Pokedex/controller/PokemonController.java
+ com.capgeminiproyect.Pokedex.controller.PokemonController
+com/capgeminiproyect/Pokedex/service/PokemonService.java
+ com.capgeminiproyect.Pokedex.service.PokemonService
+com/capgeminiproyect/Pokedex/persistense/Pokemon.java
+ com.capgeminiproyect.Pokedex.persistense.Pokemon
+com/capgeminiproyect/Pokedex/service/PokemoInterfaceService.java
+ com.capgeminiproyect.Pokedex.service.PokemoInterfaceService

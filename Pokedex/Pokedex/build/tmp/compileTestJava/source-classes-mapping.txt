@@ -1,0 +1,2 @@
+com/capgeminiproyect/Pokedex/PokedexApplicationTests.java
+ com.capgeminiproyect.Pokedex.PokedexApplicationTests
